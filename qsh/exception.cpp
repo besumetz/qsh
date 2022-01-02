@@ -7,6 +7,7 @@ Exception::Exception()
 
 Exception::Exception(const char* msg)
 {
+#pragma warning(suppress : 4996)
     strcpy(m_msg, msg);
 }
 

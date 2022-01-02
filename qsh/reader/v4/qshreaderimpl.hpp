@@ -21,7 +21,11 @@ public:
     std::vector<IQshStream*> streams() const;
     size_t streams_count() const;
     bool eof() const;
-    void read(bool push);
+#ifdef ORDLOG_PROCESSOR_ENABLED
+    void read();
+#else
+    void read(bool push_ordlog_entries, bool push_deals, bool push_quotes);
+#endif
     void read_next_record_header();
 
 private:

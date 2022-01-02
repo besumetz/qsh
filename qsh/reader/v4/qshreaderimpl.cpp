@@ -1,5 +1,6 @@
 #include "qshreaderimpl.hpp"
 #include "ordlogstream.hpp"
+#include "dealstream_r.hpp"
 #include "../../exception.h"
 #include "../../types/streamtype.h"
 #include "../../exceptions/endofstreamexception.h"
@@ -25,8 +26,11 @@ QshReaderImpl::QshReaderImpl(std::istream& input) :
             case StreamType::OrdLog:
                 m_streams.push_back(std::make_unique<OrdLogStream>(m_data_reader));
                 break;
+            case StreamType::Deals:
+                m_streams.push_back(std::make_unique<DealStreamReader>(m_data_reader));
+                break;
             default:
-                throw Exception("Unsopported stream");
+                throw Exception("Unsupported stream");
         }
     }
     if (m_streams.size() == 1)
@@ -76,11 +80,19 @@ bool QshReaderImpl::eof() const
     return m_eof;
 }
 
-void QshReaderImpl::read(bool push)
+#ifdef ORDLOG_PROCESSOR_ENABLED
+void QshReaderImpl::read()
 {
-    m_current_stream->read(push);
+    m_current_stream->read();
     read_next_record_header();
 }
+#else
+void QshReaderImpl::read(bool push_ordlog_entries, bool push_deals, bool push_quotes)
+{
+    m_current_stream->read(push_ordlog_entries, push_deals, push_quotes);
+    read_next_record_header();
+}
+#endif
 
 void QshReaderImpl::read_next_record_header()
 {

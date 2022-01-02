@@ -11,16 +11,16 @@ DataReader::DataReader(std::istream& input) :
 {
 }
 
-u_int8_t DataReader::read_byte()
+uint8_t DataReader::read_byte()
 {
     char byte;
     m_input->read(&byte, 1);
-    return static_cast<u_int8_t>(byte);
+    return static_cast<uint8_t>(byte);
 }
 
-u_int16_t DataReader::read_uint16()
+uint16_t DataReader::read_uint16()
 {
-    u_int16_t value;
+    uint16_t value;
     m_input->read(utils::pointer_cast<char*>(&value), sizeof(value));
     return value;
 }
@@ -45,7 +45,7 @@ boost::posix_time::ptime DataReader::read_datetime()
 
 int64_t DataReader::read_growing(int64_t last_value)
 {
-    u_int32_t offset = uleb128::read(*m_input);
+    uint32_t offset = uleb128::read(*m_input);
     if(offset == uleb128::Max4BValue)
         return last_value + leb128::read(*m_input);
     else

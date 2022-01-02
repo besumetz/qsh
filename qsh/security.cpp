@@ -6,7 +6,10 @@
 
 namespace qsh {
 
-Security::Security()
+Security::Security() :
+    m_id(0),
+    m_key(0),
+    m_step(0)
 {
 }
 
@@ -72,7 +75,7 @@ void Security::entry(const std::string& entry)
     }
 }
 
-int Security::key() const
+sec_key_t Security::key() const
 {
     return m_key;
 }
@@ -97,24 +100,24 @@ double Security::step() const
     return m_step;
 }
 
-int Security::get_key(const std::string& cname)
+sec_key_t Security::get_key(const std::string& cname)
 {
     std::hash<std::string> hash_fn;
     return hash_fn(cname);
 }
 
-int Security::get_key(int ckey, int id)
+sec_key_t Security::get_key(uint64_t ckey, int id)
 {
     return ckey ^ id;
 }
 
-int Security::get_key(int ckey, const std::string& ticker)
+sec_key_t Security::get_key(uint64_t ckey, const std::string& ticker)
 {
     std::hash<std::string> hash_fn;
     return ckey ^ hash_fn(ticker);
 }
 
-int Security::get_key(int ckey, const std::string& ticker, const std::string& aux_code)
+sec_key_t Security::get_key(uint64_t ckey, const std::string& ticker, const std::string& aux_code)
 {
     std::hash<std::string> hash_fn;
     return ckey ^ hash_fn(ticker) ^ (~hash_fn(aux_code));

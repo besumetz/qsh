@@ -10,4 +10,5 @@
 #include "quote.h"
 #include "deal.h"
 
+
 #endif // QSH_TYPES_H

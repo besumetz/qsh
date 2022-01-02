@@ -12,8 +12,8 @@ class DataReader
 {
 public:
     DataReader(std::istream& input);
-    u_int8_t read_byte();
-    u_int16_t read_uint16();
+    uint8_t read_byte();
+    uint16_t read_uint16();
     std::string read_string();
     pt::ptime read_datetime();
     int64_t read_growing(int64_t last_value);

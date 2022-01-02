@@ -12,12 +12,12 @@ void RawQuotes::clear()
     m_quotes.clear();
 }
 
-int& RawQuotes::operator[](int key)
+qty_t& RawQuotes::operator[](quotes_price_t key)
 {
     return m_quotes[key];
 }
 
-void RawQuotes::remove(int key)
+void RawQuotes::remove(quotes_price_t key)
 {
     m_quotes.erase(key);
 }

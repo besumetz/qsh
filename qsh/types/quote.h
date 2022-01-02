@@ -1,6 +1,7 @@
 #ifndef QSH_QUOTE_H
 #define QSH_QUOTE_H
 
+#include "../headers.h"
 namespace qsh {
 
 enum class QuoteType
@@ -11,13 +12,17 @@ enum class QuoteType
 
 struct Quote
 {
-    int price;
-    int volume;
+    quotes_price_t price;
+    qty_t volume;
     QuoteType type;
 
-    Quote()
+    Quote() :
+        price(0),
+        volume(0),
+        type(QuoteType::Ask)
     {}
-    Quote(int _price, int _volume, QuoteType _type) :
+
+    Quote(quotes_price_t _price, qty_t _volume, QuoteType _type) :
         price(_price),
         volume(_volume),
         type(_type)
