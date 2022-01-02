@@ -1,7 +1,6 @@
 #ifndef LEB128_H
 #define LEB128_H
 
-#include <sys/types.h>
 #include <istream>
 
 class leb128
@@ -35,6 +34,7 @@ public:
     static const int64_t Max9BValue = -Min9BValue - 1;
 
     static int64_t read(std::istream& input);
+    static void write(std::ostream& output, int64_t value);
 };
 
 #endif // LEB128_H

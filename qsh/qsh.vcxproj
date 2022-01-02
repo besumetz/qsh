@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8768ce1b-13cf-47ed-8382-44bb97aee4d4}</ProjectGuid>
+    <RootNamespace>qsh</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(Platform)_$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)$(Platform)_$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(BOOST_DIR)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>c:\_lib\boost_1_75_0\stage\lib\;</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(BOOST_DIR)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>c:\_lib\boost_1_75_0\stage\lib\;</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="exception.h" />
+    <ClInclude Include="exceptions\endofstreamexception.h" />
+    <ClInclude Include="headers.h" />
+    <ClInclude Include="OrdLogProcessor.h" />
+    <ClInclude Include="qsh.hpp" />
+    <ClInclude Include="reader\iqshreader.hpp" />
+    <ClInclude Include="reader\iqshstream.hpp" />
+    <ClInclude Include="reader\qshreader.hpp" />
+    <ClInclude Include="reader\v4\datareader.hpp" />
+    <ClInclude Include="reader\v4\dealstream_r.hpp" />
+    <ClInclude Include="reader\v4\ordlogstream.hpp" />
+    <ClInclude Include="reader\v4\qshreaderimpl.hpp" />
+    <ClInclude Include="reader\v4\qshstream.hpp" />
+    <ClInclude Include="security.hpp" />
+    <ClInclude Include="types\deal.h" />
+    <ClInclude Include="types\flags.h" />
+    <ClInclude Include="types\leb128.h" />
+    <ClInclude Include="types\ordlogentry.h" />
+    <ClInclude Include="types\quote.h" />
+    <ClInclude Include="types\rawquotes.h" />
+    <ClInclude Include="types\streamtype.h" />
+    <ClInclude Include="types\types.h" />
+    <ClInclude Include="types\uleb128.h" />
+    <ClInclude Include="utils.h" />
+    <ClInclude Include="writer\datawriter.hpp" />
+    <ClInclude Include="writer\dealsstream_w.hpp" />
+    <ClInclude Include="writer\qshwriter.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="exception.cpp" />
+    <ClCompile Include="exceptions\endofstreamexception.cpp" />
+    <ClCompile Include="OrdLogProcessor.cpp" />
+    <ClCompile Include="reader\iqshreader.cpp" />
+    <ClCompile Include="reader\iqshstream.cpp" />
+    <ClCompile Include="reader\qshreader.cpp" />
+    <ClCompile Include="reader\v4\datareader.cpp" />
+    <ClCompile Include="reader\v4\dealstream_r.cpp" />
+    <ClCompile Include="reader\v4\ordlogstream.cpp" />
+    <ClCompile Include="reader\v4\qshreaderimpl.cpp" />
+    <ClCompile Include="reader\v4\qshstream.cpp" />
+    <ClCompile Include="security.cpp" />
+    <ClCompile Include="types\deal.cpp" />
+    <ClCompile Include="types\flags.cpp" />
+    <ClCompile Include="types\leb128.cpp" />
+    <ClCompile Include="types\ordlogentry.cpp" />
+    <ClCompile Include="types\quote.cpp" />
+    <ClCompile Include="types\rawquotes.cpp" />
+    <ClCompile Include="types\uleb128.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="writer\datawriter.cpp" />
+    <ClCompile Include="writer\dealsstream_w.cpp" />
+    <ClCompile Include="writer\qshwriter.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

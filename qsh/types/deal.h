@@ -7,25 +7,33 @@ namespace qsh {
 
 enum class DealType
 {
+    Unknown,
     Buy,
     Sell
 };
 
 struct Deal
 {
-    int sec_key;
-    long id;
-    int price;
-    int volume;
+    sec_key_t sec_key;
+    order_id_t id;
+    price_t price;
+    qty_t volume;
     DealType type;
-    int oi;
+    qty_t oi;
     pt::ptime datetime;
 
-    Deal()
+    Deal() :
+        sec_key(-1),
+        id(0),
+        price(0),
+        volume(0),
+        type(DealType::Buy),
+        oi(0),
+        datetime()
     {}
 
-    Deal(int _sec_key, long _id, int _price, int _volume,
-         DealType _type, int _oi, const pt::ptime& _datetime) :
+    Deal(sec_key_t _sec_key, order_id_t _id, price_t _price, qty_t _volume,
+         DealType _type, qty_t _oi, const pt::ptime& _datetime) :
         sec_key(_sec_key),
         id(_id),
         price(_price),
@@ -35,6 +43,9 @@ struct Deal
         datetime(_datetime)
     {}
 };
+
+bool operator == (Deal const& l, Deal const& r);
+bool operator != (Deal const& l, Deal const& r);
 
 }
 

@@ -23,7 +23,7 @@ QshReader::QshReader(const std::string& path) :
     if (strcmp(signature, cur_signature) != 0) {
         throw Exception("Not qsh format");
     }
-    u_int8_t version;
+    uint8_t version;
     m_input.read(utils::pointer_cast<char*>(&version), 1);
     switch(version)
     {
@@ -70,10 +70,17 @@ bool QshReader::eof() const
     return m_qsh_reader->eof();
 }
 
-void QshReader::read(bool push)
+#ifdef ORDLOG_PROCESSOR_ENABLED
+void QshReader::read()
 {
-    m_qsh_reader->read(push);
+    m_qsh_reader->read();
 }
+#else
+void QshReader::read(bool push_ordlog_entries, bool push_deals, bool push_quotes)
+{
+    m_qsh_reader->read(push_ordlog_entries, push_deals, push_quotes);
+}
+#endif
 
 void QshReader::init(const std::string& path)
 {

@@ -5,7 +5,7 @@ namespace utils {
 
 bool is_gzipped(std::istream& input)
 {
-    u_int8_t magic[2];
+    uint8_t magic[2];
     input.read(pointer_cast<char*>(magic), 2);
     input.seekg(std::ios_base::beg);
     return (magic[0] == 0x1f) && (magic[1] == 0x8b);

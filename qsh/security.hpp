@@ -11,17 +11,17 @@ public:
     Security();
     Security(const std::string& entry);
     void entry(const std::string& entry);
-    int key() const;
+    sec_key_t key() const;
     std::string entry() const;
     double price(int ticks) const;
     std::string ticker() const;
     double step() const;
 
 public:
-    static int get_key(const std::string& cname);
-    static int get_key(int ckey, int id);
-    static int get_key(int ckey, const std::string& ticker);
-    static int get_key(int ckey, const std::string& ticker, const std::string& aux_code);
+    static sec_key_t get_key(const std::string& cname);
+    static sec_key_t get_key(uint64_t ckey, int id);
+    static sec_key_t get_key(uint64_t ckey, const std::string& ticker);
+    static sec_key_t get_key(uint64_t ckey, const std::string& ticker, const std::string& aux_code);
 
 private:
     void init_key();
@@ -34,7 +34,7 @@ private:
     std::string m_aux_code;
     int m_id;
     double m_step;
-    int m_key;
+    sec_key_t m_key;
 };
 
 }
